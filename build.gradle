@@ -1,0 +1,38 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        flatDir {
+            dirs './', '../mdslib-1.28.1(1)-release/' // Folders to look for jar & aar libraries
+        }
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.2.1'
+}
+
+dependencies {
+    //compile fileTree(include: ['*.jar'], dir: 'mdslib-1.28.1(1)-release')
+    // Movesense .aar lib
+    //compile(name: 'mdslib', version: '1.28.1(1)-release', ext: 'aar')
+    //implementation project(':mdslib-1.28.1(1)-release')
+    //compile project(':mdslib-1.28.1(1)-release')
+}
